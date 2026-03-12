@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>gimbal_controller</name>  <!-- 包名改为云台控制器相关 -->
+  <version>0.1.0</version>
+  <description>ROS2 package for controlling gimbal (pan-tilt) with serial communication and ROS2 interfaces</description>  <!-- 描述修改为云台控制 -->
+  
+  <maintainer email="your.email@example.com">Your Name</maintainer>
+  <license>Apache License 2.0</license>
+
+  <!-- 构建工具依赖 -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_auto</buildtool_depend>
+
+  <!-- ROS2核心依赖 -->
+  <depend>rclcpp</depend>
+  <depend>rclcpp_action</depend>
+  <depend>rclcpp_lifecycle</depend>
+
+  <depend>rclcpp_components</depend>
+  <depend>OpenCV</depend>
+  <!-- 消息依赖 -->
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>control_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>visualization_msgs</depend>
+
+  
+  <depend>control_toolbox</depend>
+  
+  <!-- 系统库依赖 -->
+  <depend>yaml-cpp</depend>
+  <depend>libserial-dev</depend>
+  
+  <!-- 硬件接口依赖（云台控制可能需要） -->
+  <depend>hardware_interface</depend>
+  <depend>controller_interface</depend>
+  
+  <!-- 测试依赖 -->
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <test_depend>ament_cmake_gtest</test_depend>
+  
+  <!-- 文档生成 -->
+  <doc_depend>doxygen</doc_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+    <!-- 为ROS2控制器管理器提供接口（适用于云台控制器） -->
+    <controller_interface plugin="${prefix}/gimbal_controller_plugin.xml"/>  <!-- 插件名同步修改 -->
+  </export>
+</package>
